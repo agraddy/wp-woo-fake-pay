@@ -1,7 +1,7 @@
 === Fake Pay For WooCommerce ===
 
-Contributors: agraddy
-Author URI: https://www.dashboardq.com
+Contributors: agraddy, MelchiorKokernoot
+Author URI: https://www.dashboardq.com, https://melchiorkokernoot.nl
 Plugin URI: https://github.com/agraddy/wp-woo-fake-pay
 Requires PHP:  5.6
 Requires at least: 4.0
@@ -29,6 +29,9 @@ This plugin is useful for testing a WooCommerce checkout flow on a production si
 6. The Fake Pay payment gateway is now active for admin users.
 
 == Changelog ==
+
+= 1.0.1 =
+* Add check for an active WooCommerce installation to prevent errors
 
 = 1.0.0 =
 * Initial release
