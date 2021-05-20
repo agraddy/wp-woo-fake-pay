@@ -22,6 +22,15 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
   add_action( 'admin_notices', function () use ( $content ) {
 	echo $content;
   } );
+  disable_fake_pay();
+}
+
+function disable_fake_pay() {
+  $active_plugins = get_option( 'active_plugins' );
+  if ( ( $key = array_search( 'wp-woo-fake-pay/main.php', $active_plugins ) ) !== false ) {
+	unset( $active_plugins[ $key ] );
+	update_option( 'active_plugins', $active_plugins );
+  }
 }
 
 function fake_pay_init_gateway_class() {
