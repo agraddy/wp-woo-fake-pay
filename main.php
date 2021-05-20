@@ -8,19 +8,17 @@ Plugin URI: https://github.com/agraddy/wp-woo-fake-pay
 Version: 1.0.1
 */
 
-$content = <<<EOT
-        <div class="notice notice-error is-dismissible">
-			<p>It appears WooCommerce is not active.</p>
-        </div>
-EOT;
-
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ), true ) ) {
   add_action( 'plugins_loaded', 'fake_pay_init_gateway_class' );
   add_filter( 'woocommerce_payment_gateways', 'fake_pay_add_gateway_class' );
 } else {
   unset( $_GET['activate'] );
-  add_action( 'admin_notices', function () use ( $content ) {
-	echo $content;
+  add_action( 'admin_notices', function () {
+	echo <<<EOT
+        <div class="notice notice-error is-dismissible">
+			<p>It appears WooCommerce is not active.</p>
+        </div>
+EOT;
   } );
   disable_fake_pay();
 }
